@@ -29,7 +29,7 @@ default: all
 
 # OS, version, pkgconfig & misc stuff handling (heavily inspired from git's Makefiles ;))
 # It's basically our fake automated configure script, and it uses bash features, so override the default shell!
-SHELL:=env bash
+SHELL:=$(shell command -v bash)
 version-inc:
 	@$(SHELL) ./version.sh GIT $(NEED_STATIC_PKGC)
 -include version-inc
