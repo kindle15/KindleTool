@@ -691,7 +691,7 @@ int
 		fprintf(stderr, "Error reading input file: %s.\n", strerror(errno));
 		return -1;
 	}
-#if NETTLE_VERSION_MAJOR == 4
+#if NETTLE_VERSION_MAJOR >= 4
 	md5_digest(&md5, digest);
 #else
 	md5_digest(&md5, MD5_DIGEST_SIZE, digest);
@@ -718,7 +718,7 @@ int
 		fprintf(stderr, "Error reading input file: %s.\n", strerror(errno));
 		return -1;
 	}
-#if NETTLE_VERSION_MAJOR == 4
+#if NETTLE_VERSION_MAJOR >= 4
 	sha256_digest(&sha256, digest);
 #else
 	sha256_digest(&sha256, SHA256_DIGEST_SIZE, digest);
@@ -1030,7 +1030,7 @@ static int
 	// The root password is based on the MD5 hash of the S/N, so, hash it first.
 	md5_init(&md5);
 	md5_update(&md5, SERIAL_NO_LENGTH + 1, (uint8_t*) serial_no);
-#if NETTLE_VERSION_MAJOR == 4
+#if NETTLE_VERSION_MAJOR >= 4
 	md5_digest(&md5, digest);
 #else
 	md5_digest(&md5, MD5_DIGEST_SIZE, digest);
